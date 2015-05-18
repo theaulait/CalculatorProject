@@ -3,6 +3,7 @@ package com.example.joe.plus;
 /**
  * Created by Jose & Vanice on 5/5/15.
  */
+
 public class Calculator {
 
     private double operand = 0;
@@ -47,15 +48,21 @@ public class Calculator {
             }
         } else if (operator.equals("+/-")) {
             calculatorMemory = operand = -operand;
-        } else if (operator.equals("sin")) {
+        }else if (operator.equals("sin")) {
             calculatorMemory = operand = Math.sin(operand);
         } else if (operator.equals("cos")) {
            calculatorMemory = operand = Math.cos(operand);
-        } else {
+        } else if(operator.equals("%")){
+            if (waitingOperand != 0){
+            operand = waitingOperand * (operand/100);
+            } else {
+                operand = operand/100;
+            }
+        }
             performWaitingOperation();
             waitingOperator = operator;
             waitingOperand = operand;
-        }
+
 
         return operand;
     }
@@ -77,7 +84,5 @@ public class Calculator {
                 calculatorMemory = operand;
             }
         }
-
     }
-
 }

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
@@ -16,6 +17,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private TextView calculatorDisplay;
     private static final String DIGITS = "0123456789.";
     private boolean typing = false;
+
+
 
     DecimalFormat df = new DecimalFormat("@###########");
 
@@ -50,6 +53,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.neg).setOnClickListener(this);
         findViewById(R.id.equals).setOnClickListener(this);
         findViewById(R.id.clear).setOnClickListener(this);
+        findViewById(R.id.perc).setOnClickListener(this);
+
+
     }
 
 
@@ -87,7 +93,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 calculatorDisplay.setText(buttonPressed);
                 typing = true;
             }
-        } else {
+        } else{
             // operator was pressed
             if (typing) {
                 brain.setOperand(Double.parseDouble(calculatorDisplay.getText().toString()));
